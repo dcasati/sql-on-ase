@@ -1,28 +1,12 @@
 apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: mssql-pv-volume
-  namespace: trapp-demo
-  labels:
-    type: local
-spec:
-  storageClassName: manual
-  capacity:
-    storage: 20Gi
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/mnt/data"
----
-apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mssql-data
   namespace: trapp-demo
 spec:
-  storageClassName: manual
+  storageClassName: ase-node-local
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 8Gi
+      storage: 20Gi
